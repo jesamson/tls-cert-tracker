@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: tls-cert-tracker-route
+spec:
+  to:
+    kind: Service
+    name: tls-cert-tracker-service
+  port:
+    targetPort: 80
+  tls:
+    termination: edge

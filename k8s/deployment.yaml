@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tls-cert-tracker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tls-cert-tracker
+  template:
+    metadata:
+      labels:
+        app: tls-cert-tracker
+    spec:
+      containers:
+        - name: tls-cert-tracker
+          image: your-dockerhub-username/tls-cert-tracker:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
